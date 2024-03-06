@@ -1,0 +1,1267 @@
+*{margin: 0%;}
+
+#main_fra{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    background-color: #014421;
+    margin: 0%;
+}
+
+#sr_fra{
+    height: 90%;
+    width: 99.7%;
+    /*border: solid;
+    border-color: #50C878;*/
+    background-color: #014421;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1%;
+}
+#ope{
+    height: 8%;
+    width: 99.7%;
+    background-color: #014421;
+    /*border: solid;
+    border-color: #50C878;*/
+    display: flex;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 11%;
+}
+
+#setting{
+    display: none;
+    background-color: #014421;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#menu{
+    color: white;
+    background-color: #014421;
+    border:none;
+    cursor: pointer;
+}
+
+#ope h1{
+    color: white;
+    width: 80%;
+    text-align: center;
+}
+
+#ch_frame{
+    display: flex;
+    width: 17%;
+    gap: 2%;
+}
+#ope p{
+    color: white;
+    display: flex;
+    border: 1px solid;
+    padding: 1%;
+    align-items: center;
+    cursor: pointer;
+}
+
+#settingbar{
+    display: none;
+    position: absolute;
+    left:80%;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    height: 20%;
+    width: 20%;
+    gap:8.5%;
+}
+
+#sidebar{
+    display: none;
+    position: absolute;
+    left:0%;
+    flex-direction: column;
+    background-color: white;
+    height: 100%;
+    width: 15%;
+    animation: open;
+    animation-duration: 0.5s;
+}
+
+@keyframes open {
+    from{
+        width: 0%;
+    }
+    to{
+        width: 15%;
+    }
+}
+
+#cls_btn{
+    background-color: gainsboro;
+    border: none;
+    height: 7%;
+    text-align: start;
+    font-size: 100%;
+    width: 100%;
+    animation: anime;
+    animation-duration: 0.3s;
+}
+#st_cls_btn{
+    background-color: gainsboro;
+    border: none;
+    height: 35%;
+    text-align: start;
+    font-size: 100%;
+    width: 100%;
+}
+
+@keyframes anime {
+    from{
+        font-size: 0%;
+    }
+    to{
+    }
+}
+
+#sidebar a{
+    text-decoration: none;
+    height: 6%;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+    color: black;
+    animation: anime2;
+    animation-duration: 0.3s;
+}
+
+@keyframes anime2 {
+    from{
+        font-size: 0%;
+    }
+    to{
+    }
+}
+
+#sidebar a:hover{
+    background-color:lightgrey;
+}
+
+#spd{
+    display: flex;
+    width: 7%;
+    border: none;
+    justify-content: center;
+    flex-direction: row;
+}
+#spd button{
+    background-color: #014421;
+    color: white;
+    font-size: 100%;
+    border: none;
+    cursor: pointer;
+}
+#sp{
+    width:100%;
+    background-color: #50C878;
+    border: 1px solid white;
+    color: white;
+}
+
+
+#spd2{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    border: none;
+    justify-content: center;
+    flex-direction: row;
+}
+#spd2 button{
+    background-color: #014421;
+    color: white;
+    font-size: 100%;
+    border: none;
+    cursor: pointer;
+}
+#sp2{
+    width:100%;
+    background-color: #50C878;
+    border: 1px solid white;
+    color: white;
+}
+
+#sz{
+    width:100%;
+    background-color: #50C878;
+    border: 1px solid white;
+    color: white;
+}
+#size button{
+    background-color: #014421;
+    color: white;
+    font-size: 100%;
+    border: none;
+    cursor: pointer;
+}
+#size{
+    display: flex;
+    width: 7%;
+    border: none;
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+#sz2{
+    width:100%;
+    background-color: #50C878;
+    border: 1px solid white;
+    color: white;
+}
+#size2 button{
+    background-color: #014421;
+    color: white;
+    font-size: 100%;
+    border: none;
+    cursor: pointer;
+}
+#size2{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    border: none;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#arr{
+    display: flex;
+    width: 99%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ele{
+    border: solid;
+    border-color: #50C878;
+    width: 3%;
+    margin: 0.2%;
+    display: flex;
+    line-height: 120%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #50C878;
+}
+
+#no{
+    width:100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
+}
+
+#idx{
+    height: 40%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70%;
+    color: white;
+}
+
+#anime_start{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3%;
+    justify-content: center;
+    width: 20%;
+}
+
+#start{
+    border: none;
+    background-color: #014421;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+    padding-right: 10%;
+}
+
+#rand{
+    border: none;
+    background-color: #014421;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+    padding-right: 10%;
+}
+
+#no_src{
+    background-color: white;
+    color: black;
+    width: 25%;
+    border-color:whitesmoke;
+}
+#curr{
+    border: solid;
+    border-color: #50C878;
+    width: 4%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+#fnd{
+    border: solid;
+    border-color: #50C878;
+    background-color: orange;
+    color: white;
+    height: 50%;
+    width: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bk{
+    position: absolute;
+    display: none;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+}
+
+#cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33%;
+    width: 99.6%;
+    gap: 10%;
+}
+
+#left{
+    background-color: #014421;
+    width: 10%;
+    height: 30%;
+    display: none;
+    justify-content: end;
+    align-items: center;
+    gap: 10%;
+    word-wrap: break-word;
+}
+
+#here{
+    background-color: #014421;
+    width: 10%;
+    height: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10%;
+    word-wrap: break-word;
+}
+
+#right{
+    background-color: #014421;
+    width: 10%;
+    height: 30%;
+    display: none;
+    justify-content: end;
+    align-items: center;
+    gap: 10%;
+    word-wrap: break-word;
+}
+
+#left_info{
+    width: 50%;
+    height: 100%;
+    color: red;
+    border: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ele_fnd_info{
+    width: 50%;
+    height: 100%;
+    color: #50C878;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#right_info{
+    width: 50%;
+    height: 100%;
+    color: blue;
+    border: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#curr_idx{
+    color: white;
+}
+#left_idx{
+    color: white;
+}
+#right_idx{
+    color:white;
+}
+
+#l{
+    background-color: #014421;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#r{
+    background-color: #014421;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1370px) {
+    #ope{
+        gap: 10%;
+    }
+    #size{
+        width: 8%;
+    }
+    #spd{
+        width: 8%;
+    }
+    #left{
+        width: 10%;
+        height: 20%;
+    }
+    #here{
+        width: 10%;
+        height: 20%;
+    }
+    #right{
+        width: 10%;
+        height: 20%;
+    }
+    #anime_start{
+        width: 23%;
+    }
+
+}
+@media screen and (max-width: 1195px) {
+    #size{
+        width: 9%;
+    }
+    #spd{
+        width: 9%;
+    }
+    #left{
+        width: 10%;
+        height: 18%;
+    }
+    #right{
+        width: 10%;
+        height: 18%;
+    }
+    #here{
+        width: 10%;
+        height: 18%;
+    }
+    #curr{
+        height: 45%;
+        width: 6%;
+    }
+    #fnd{
+        height: 45%;
+        width: 6%;
+    }
+    #anime_start{
+        width: 26%;
+    }
+
+}
+@media screen and (max-width: 1070px) {
+    #ope{
+        gap: 9%;
+    }
+    #size{
+        width: 10%;
+    }
+    #spd{
+        width: 10%;
+    }
+    #left{
+        width: 14%;
+        height: 21%;
+    }
+    #right{
+        width: 14%;
+        height: 21%;
+    }
+    #here{
+        width: 14%;
+        height: 21%;
+    }
+    #curr{
+        font-size: 85%;
+        height: 45%;
+    }
+    #fnd{
+        font-size: 85%;
+        height: 45%;
+    }
+    #anime_start{
+        width: 29%;
+    }
+    #curr_idx{
+        font-size: 90%;
+    }
+    #left_idx{
+        font-size: 90%;
+    }
+    #right_idx{
+        font-size: 90%;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    #ope{
+        gap: 8%;
+    }
+    #size{
+        width: 11%;
+    }
+    #spd{
+        width: 11%;
+    }
+    #left{
+        width: 15%;
+        height: 21%;
+    }
+    #right{
+        width: 15%;
+        height: 21%;
+    }
+    #here{
+        width: 15%;
+        height: 21%;
+    }
+    #curr{
+        height: 45%;
+        width: 6%;
+    }
+    #fnd{
+        height: 45%;
+        width: 6%;
+    }
+    #anime_start{
+        width: 32%;
+    }
+    #curr_idx{
+        font-size: 80%;
+    }
+    #left_idx{
+        font-size: 80%;
+    }
+    #right_idx{
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 876px) {
+    #ope{
+        gap: 7%;
+    }
+    #size{
+        width: 12%;
+    }
+    #spd{
+        width: 12%;
+    }
+    #left{
+        width: 15%;
+        height: 21%;
+    }
+    #right{
+        width: 15%;
+        height: 21%;
+    }
+    #here{
+        width: 15%;
+        height: 21%;
+    }
+    #curr{
+        font-size: 90%;
+        height: 40%;
+        width: 6%;
+    }
+    #fnd{
+        font-size: 90%;
+        height: 40%;
+        width: 6%;
+    }
+    #anime_start{
+        width: 35%;
+    }
+    #curr_idx{
+        font-size: 70%;
+    }
+    #left_idx{
+        font-size: 70%;
+    }
+    #right_idx{
+        font-size: 70%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 18%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 18%;
+        }
+    }
+}
+
+@media screen and (max-width: 798px) {
+    #ope{
+        gap: 7%;
+    }
+    #size{
+        width: 13%;
+    }
+    #spd{
+        width: 13%;
+    }
+    #left{
+        width: 16%;
+        height: 20%;
+    }
+    #right{
+        width: 16%;
+        height: 20%;
+    }
+    #here{
+        width: 16%;
+        height: 20%;
+    }
+    #curr{
+        font-size: 80%;
+        height: 40%;
+        width: 6%;
+    }
+    #fnd{
+        font-size: 80%;
+        height: 40%;
+        width: 6%;
+    }
+    #anime_start{
+        width: 38%;
+    }
+    #curr_idx{
+        font-size: 70%;
+    }
+    #left_idx{
+        font-size: 70%;
+    }
+    #right_idx{
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    #ope{
+        gap: 7%;
+    }
+    #size{
+        width: 13%;
+        font-size: 50%;
+    }
+    #spd{
+        width: 13%;
+        font-size: 50%;
+    }
+    #left{
+        width: 16%;
+        height: 20%;
+    }
+    #right{
+        width: 16%;
+        height: 20%;
+    }
+    #here{
+        width: 17%;
+        height: 20%;
+    }
+    #curr{
+        font-size: 80%;
+        height: 40%;
+        width: 6%;
+    }
+    #fnd{
+        font-size: 80%;
+        height: 40%;
+        width: 6%;
+    }
+    #anime_start{
+        width: 42%;
+    }
+    #curr_idx{
+        font-size: 70%;
+    }
+    #left_idx{
+        font-size: 70%;
+    }
+    #right_idx{
+        font-size: 70%;
+    }
+}
+@media screen and (max-width: 681px) {
+    #ope{
+        gap: 6%;
+    }
+    #size{
+        width: 14%;
+    }
+    #spd{
+        width: 14%;
+    }
+    #left{
+        width: 16%;
+        height: 20%;
+    }
+    #right{
+        width: 16%;
+        height: 20%;
+    }
+    #here{
+        width: 17%;
+        height: 20%;
+    }
+    #curr{
+        font-size: 80%;
+        height: 40%;
+        width: 7%;
+    }
+    #fnd{
+        font-size: 80%;
+        height: 40%;
+        width: 7%;
+    }
+    #anime_start{
+        width: 45%;
+    }
+    #curr_idx{
+        font-size: 60%;
+    }
+    #left_idx{
+        font-size: 60%;
+    }
+    #right_idx{
+        font-size: 60%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 20%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 20%;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    #ope{
+        gap:12%
+    }
+
+    #ch_frame{
+        display: flex;
+        width: 20%;
+        gap: 2%;
+    }
+
+    #setting{
+        display: block;
+    }
+
+    #spd{
+        display: none;
+    }
+    #size{
+        display: none;
+    }
+    #anime_start{
+        width: 48%;
+    }
+    #left{
+        width: 16%;
+        height: 20%;
+    }
+    #right{
+        width: 17%;
+        height: 20%;
+    }
+    #here{
+        width: 18%;
+        height: 20%;
+    }
+    #curr_idx{
+        font-size: 60%;
+    }
+    #left_idx{
+        font-size: 60%;
+    }
+    #right_idx{
+        font-size: 60%;
+    }
+}
+
+@media screen and (max-width: 552px) {
+    #ope{
+        gap:11%
+    }
+
+    #ch_frame{
+        display: flex;
+        width: 20%;
+        gap: 2%;
+        font-size: 90%;
+    }
+
+    #setting{
+        display: block;
+    }
+
+    #spd{
+        display: none;
+    }
+    #size{
+        display: none;
+    }
+    #curr{
+        font-size: 80%;
+        height: 40%;
+        width: 8%;
+    }
+    #fnd{
+        font-size: 80%;
+        height: 40%;
+        width: 8%;
+    }
+    #anime_start{
+        width: 55%;
+    }
+    #left{
+        width: 19%;
+        height: 20%;
+    }
+    #right{
+        width: 20%;
+        height: 20%;
+    }
+    #here{
+        width: 21%;
+        height: 20%;
+    }
+    #curr_idx{
+        font-size: 60%;
+    }
+    #left_idx{
+        font-size: 60%;
+    }
+    #right_idx{
+        font-size: 60%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 24%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 24%;
+        }
+    }
+}
+
+@media screen and (max-width: 445px) {
+    #ope{
+        gap:9%
+    }
+
+    #ch_frame{
+        display: flex;
+        width: 20%;
+        gap: 2%;
+        font-size: 70%;
+    }
+
+    #setting{
+        display: block;
+    }
+
+    #spd{
+        display: none;
+    }
+    #size{
+        display: none;
+    }
+    #curr{
+        font-size: 80%;
+        height: 40%;
+        width: 10%;
+    }
+    #fnd{
+        font-size: 80%;
+        height: 40%;
+        width: 10%;
+    }
+    #anime_start{
+        width: 68%;
+    }
+    #left{
+        width: 19%;
+        height: 19%;
+    }
+    #right{
+        width: 20%;
+        height: 19%;
+    }
+    #here{
+        width: 23%;
+        height:19%;
+    }
+    #ele_fnd_info{
+        font-size: 80%;
+    }
+    #curr_idx{
+        font-size: 60%;
+    }
+    #left_idx{
+        font-size: 60%;
+    }
+    #right_idx{
+        font-size: 60%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 27%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 27%;
+        }
+    }
+}
+
+@media screen and (max-width: 395px) {
+    #ope{
+        gap:8%
+    }
+
+    #ch_frame{
+        display: flex;
+        width: 20%;
+        gap: 2%;
+        font-size: 60%;
+    }
+
+    #setting{
+        display: block;
+    }
+
+    #spd{
+        display: none;
+    }
+    #size{
+        display: none;
+    }
+    #curr{
+        font-size: 75%;
+        height: 40%;
+        width: 10%;
+    }
+    #fnd{
+        font-size: 75%;
+        height: 40%;
+        width: 10%;
+    }
+    #anime_start{
+        width: 80%;
+    }
+    #left{
+        width: 19%;
+        height: 19%;
+    }
+    #right{
+        width: 20%;
+        height: 19%;
+    }
+    #here{
+        width: 23%;
+        height:19%;
+    }
+    #ele_fnd_info{
+        font-size: 80%;
+    }
+    #curr_idx{
+        font-size: 60%;
+    }
+    #left_idx{
+        font-size: 60%;
+    }
+    #right_idx{
+        font-size: 60%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 30%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 30%;
+        }
+    }
+}
+@media screen and (max-width: 340px) {
+    #ope{
+        gap:7%
+    }
+
+    #ch_frame{
+        display: flex;
+        width: 20%;
+        gap: 2%;
+        font-size: 50%;
+    }
+
+    #setting{
+        display: block;
+    }
+
+    #spd{
+        display: none;
+    }
+    #size{
+        display: none;
+    }
+    #curr{
+        font-size: 60%;
+        height: 40%;
+        width: 10%;
+    }
+    #fnd{
+        font-size: 60%;
+        height: 40%;
+        width: 10%;
+    }
+    #anime_start{
+        width: 90%;
+    }
+    #left{
+        width: 19%;
+        height: 17%;
+    }
+    #right{
+        width: 20%;
+        height: 17%;
+    }
+    #here{
+        width: 23%;
+        height:17%;
+    }
+    #ele_fnd_info{
+        font-size: 65%;
+    }
+    #curr_idx{
+        font-size: 50%;
+    }
+    #left_idx{
+        font-size: 50%;
+    }
+    #right_idx{
+        font-size: 50%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 37%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 37%;
+        }
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #ope{
+        gap:6%
+    }
+
+    #ch_frame{
+        display: flex;
+        width: 20%;
+        gap: 2%;
+        font-size: 30%;
+    }
+
+    #setting{
+        display: block;
+    }
+
+    #spd{
+        display: none;
+    }
+    #size{
+        display: none;
+    }
+    #curr{
+        font-size: 55%;
+        height: 40%;
+        width: 10%;
+    }
+    #fnd{
+        font-size: 55%;
+        height: 40%;
+        width: 10%;
+    }
+    #anime_start{
+        width: 90%;
+    }
+    #left{
+        width: 20%;
+        height: 16%;
+    }
+    #right{
+        width: 20%;
+        height: 16%;
+    }
+    #here{
+        width: 24%;
+        height:16%;
+    }
+    #ele_fnd_info{
+        font-size: 64%;
+    }
+    #curr_idx{
+        font-size: 50%;
+    }
+    #left_idx{
+        font-size: 50%;
+    }
+    #right_idx{
+        font-size: 50%;
+    }
+    #sidebar{
+        height: 100%;
+        width: 40%;
+        animation: open;
+        animation-duration: 0.5s;
+    }
+    @keyframes open {
+        from{
+            width: 0%;
+        }
+        to{
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 477px) {
+    #sp2{
+        font-size: 70%;
+    }
+    #sz2{
+        font-size: 70%;
+    }
+}
+@media screen and (max-width: 435px) {
+    #sp2{
+        font-size: 50%;
+    }
+    #sz2{
+        font-size: 50%;
+    }
+}
+@media screen and (max-width: 375px) {
+    #sp2{
+        font-size: 40%;
+    }
+    #sz2{
+        font-size: 40%;
+    }
+}
+@media screen and (max-width: 345px) {
+    #sp2{
+        font-size: 20%;
+    }
+    #sz2{
+        font-size: 20%;
+    }
+    #settingbar{
+        left: 75%;
+        width: 25%;
+    }
+}
+
+@media screen and (max-height: 766px) {
+    #ope{
+        height: 12%;
+    }
+}
+@media screen and (max-height: 558px) {
+    #ope{
+        height: 15%;
+    }
+}

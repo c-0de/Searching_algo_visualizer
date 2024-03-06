@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="sear.css">
+        <script src="https://kit.fontawesome.com/78459ac298.js" crossorigin="anonymous"></script>
+        <title>Searching</title>
+    </head>
+    <body>
+        <div id="main_fra">
+            <div id="bk"></div>
+            <div id="settingbar">
+                <button onclick="setting_close()" id="st_cls_btn">Close x</button>
+                <div id="spd2">
+                    <button id="sp_dec2" onclick="spd_alt('-')">-</button>
+                    <input id="sp2" type="text" onkeydown="sp()" value=speed(2)>
+                    <button id="sp_inc2" onclick="spd_alt('+')">+</button>
+                </div>
+                <div id="size2">
+                    <button id="sz_dec2" onclick="alt('-',document.getElementById('ch_algo').innerHTML)">-</button>
+                    <input id="sz2" type="text" onkeydown="sz()" value=size(25)>
+                    <button id="sz_inc2" onclick="alt('+',document.getElementById('ch_algo').innerHTML)">+</button>
+                </div>
+            </div>
+            <div id="sidebar">
+                <button onclick="sbar_close()" id="cls_btn">Close x</button>
+                <a href="#">Searching Algo</a>
+                <a href="#">Sorting Algo</a>
+            </div>
+            <div id="ope">
+                <button class="fa-solid fa-bars fa-2x" id="menu" onclick="sbar_open()"></button>
+                <div id="ch_frame"><button id="l" onclick="cg('l')"><</button><h1 id="ch_algo">Linear Search</h1><button id="r" onclick="cg('r')">></button></div>
+                <div id="curr">Current</div>
+                <div id="fnd">Found</div>
+                <button class="fa-solid fa-gear fa-2x" id="setting" onclick="setting_open()"></button>
+                <div id="spd">
+                    <button id="sp_dec" onclick="spd_alt('-')">-</button>
+                    <input id="sp" type="text" onkeydown="sp()" value=speed(2)>
+                    <button id="sp_inc" onclick="spd_alt('+')">+</button>
+                </div>
+                <div id="size">
+                    <button id="sz_dec" onclick="alt('-',document.getElementById('ch_algo').innerHTML)">-</button>
+                    <input id="sz" type="text" onkeydown="sz()" value=size(25)>
+                    <button id="sz_inc" onclick="alt('+',document.getElementById('ch_algo').innerHTML)">+</button>
+                </div>
+            </div>
+            <div id="sr_fra">
+                <div id="cont">
+                    <div id="left">
+                        <p id="left_idx">Left<br>index</p>
+                        <p id="left_info"></p>
+                    </div>
+                    <div id="here">
+                        <p id="curr_idx">Current<br>index</p>
+                        <p id="ele_fnd_info"></p>
+                    </div>
+                    <div id="right">
+                        <p id="right_idx">Right<br>index</p>
+                        <p id="right_info"></p>
+                    </div>
+                </div>
+                <div id="anime_start">
+                    <button class="fas fa-regular fa-play" id="start" onclick="srch_anime(document.getElementById('ch_algo').innerHTML)"></button>
+                    <button  class="fas fa-solid fa-shuffle" id="rand" onclick="arr_cr(document.getElementById('ch_algo').innerHTML)"></button>
+                    <input id="no_src" type="text" placeholder="No to search" value="">
+                </div>
+                <div id="arr"></div>
+            </div>
+        </div>
+        <!-----------------------------------------xxxxx------------------------------------------------>
+        <script>
+            let arr=[];
+            let temp_arr=[];
+            let arr_size=25;
+            let p_size=25;
+            let srch_no;
+            let speed=2;
+            let max_arr_size=208;
+            let max_sp=10;
+
+            let arr_cr=(t_algo)=>{
+                document.getElementById('start').removeAttribute("disabled",true);
+                document.getElementById('sz_dec').removeAttribute("disabled",true);
+                document.getElementById('sz_inc').removeAttribute("disabled",true);
+                document.getElementById('sz_dec2').removeAttribute("disabled",true);
+                document.getElementById('sz_inc2').removeAttribute("disabled",true);
+                document.getElementById("ele_fnd_info").innerHTML="";
+                document.getElementById("left_info").innerHTML="";
+                document.getElementById("right_info").innerHTML="";
+                if(t_algo=="Linear Search") document.getElementById("curr_idx").innerHTML="Current<br>index";
+                else document.getElementById("curr_idx").innerHTML="Middle<br>index"
+                document.getElementById("ele_fnd_info").style.border="solid";
+                document.getElementById("ele_fnd_info").style.display="flex";
+                document.getElementById("ele_fnd_info").style.color="#50C878";
+
+                arr=[];
+                for(let i=0;i<arr_size;i++) arr.push(parseInt(Math.random()*arr_size));
+                if(t_algo=="Linear Search"){
+                    let text="";
+                    for(let i=0;i<arr.length;i++)
+                        text+=`<div class="ele" id="${i}"><div id="no">${arr[i]}</div><div id="idx">${i}</div></div>`;
+                    document.getElementById("arr").innerHTML=text;
+                }
+                else{
+                    temp_arr=[...arr];
+                    temp_arr.sort((a,b)=>{return a-b});
+                    let text="";
+                    for(let i=0;i<temp_arr.length;i++)
+                        text+=`<div class="ele" id="${i}"><div id="no">${temp_arr[i]}</div><div id="idx">${i}</div></div>`;
+                    document.getElementById("arr").innerHTML=text;
+                }
+            }
+            
+            arr_cr(document.getElementById('ch_algo').innerHTML);
+
+            let sz=()=>{
+                setTimeout(()=>{
+                    let temp;
+                    if(document.getElementById("settingbar").style.display=="" || document.getElementById("settingbar").style.display=="none")
+                        temp=document.getElementById("sz").value;
+                    else temp=document.getElementById("sz2").value;
+                    if(temp!=p_size){
+                        let s_alt="";
+                        for(let i=0;i<temp.length;i++){
+                            if(temp[i]>='0' && temp[i]<='9') s_alt+=temp[i];
+                        }
+
+                        if(s_alt>=0 && s_alt<=max_arr_size){
+                            arr_size=s_alt;
+                            arr_cr(document.getElementById('ch_algo').innerHTML);
+                        }
+                        else alert("Min:0, Max:208");
+                        document.getElementById("sz").value=`size(${s_alt})`;
+                        document.getElementById("sz2").value=`size(${s_alt})`;
+                        p_size=temp;
+                    }
+                },1);
+            }
+
+            let alt=(op,t_algo)=>{
+                if(t_algo=="Linear Search"){
+                    if(op==='-' && arr_size){
+                        arr.pop();
+                        let text="";
+                        for(let i=0;i<arr.length;i++)
+                            text+=`<div class="ele" id="${i}"><div id="no">${arr[i]}</div><div id="idx">${i}</div></div>`;
+                        
+                        document.getElementById("arr").innerHTML=text;
+                        arr_size--;
+                        document.getElementById("sz").value=`size(${arr_size})`;
+                        document.getElementById("sz2").value=`size(${arr_size})`;
+                    }
+                    else if(op==='+' && arr_size<max_arr_size){
+                        arr.push(parseInt(Math.random()*arr_size));
+                        let text="";
+                        for(let i=0;i<arr.length;i++)
+                            text+=`<div class="ele" id="${i}"><div id="no">${arr[i]}</div><div id="idx">${i}</div></div>`;
+                        
+                        document.getElementById("arr").innerHTML=text;
+                        arr_size++;
+                        document.getElementById("sz").value=`size(${arr_size})`;
+                        document.getElementById("sz2").value=`size(${arr_size})`;
+                    }
+                }
+                else{
+                    if(op==='-' && arr_size){
+                        temp_arr.pop();
+                        let text="";
+                        for(let i=0;i<temp_arr.length;i++)
+                            text+=`<div class="ele" id="${i}"><div id="no">${temp_arr[i]}</div><div id="idx">${i}</div></div>`;
+                        
+                        document.getElementById("arr").innerHTML=text;
+                        arr_size--;
+                        document.getElementById("sz").value=`size(${arr_size})`;
+                        document.getElementById("sz2").value=`size(${arr_size})`;
+                    }
+                    else if(op==='+' && arr_size<max_arr_size){
+                        temp_arr.push(arr_size);
+                        let text="";
+                        for(let i=0;i<temp_arr.length;i++)
+                            text+=`<div class="ele" id="${i}"><div id="no">${temp_arr[i]}</div><div id="idx">${i}</div></div>`;
+                        
+                        document.getElementById("arr").innerHTML=text;
+                        arr_size++;
+                        document.getElementById("sz").value=`size(${arr_size})`;
+                        document.getElementById("sz2").value=`size(${arr_size})`;
+                    }
+                }
+            }
+
+            let sp=()=>{
+                setTimeout(()=>{
+                    let temp;
+                    if(document.getElementById("settingbar").style.display=="" || document.getElementById("settingbar").style.display=="none")
+                        temp=document.getElementById("sp").value;
+                    else temp=document.getElementById("sp2").value;
+                    let s_alt="";
+                    for(let i=0;i<temp.length;i++){
+                        if(temp[i]>='0' && temp[i]<='9') s_alt+=temp[i];
+                    }
+
+                    if(s_alt>=0 && s_alt<=max_sp){
+                        speed=s_alt;
+                    }
+                    else alert("Min:1,Max:10");
+                    document.getElementById("sp").value=`speed(${s_alt})`;
+                    document.getElementById("sp2").value=`speed(${s_alt})`;
+                },1);
+            }
+
+            let spd_alt=(op)=>{
+                if(op==='-' && speed>1){
+                    speed--;
+                    document.getElementById("sp").value=`speed(${speed})`;
+                    document.getElementById("sp2").value=`speed(${speed})`;
+                }
+                else if(op==='+' && speed<max_sp){
+                    speed++;
+                    document.getElementById("sp").value=`speed(${speed})`;
+                    document.getElementById("sp2").value=`speed(${speed})`;
+                }
+            }
+
+            let f_idx;
+            let linear_srch = ()=>{
+                for(let i=0;i<arr.length;i++){
+                    if(arr[i]==srch_no){
+                        f_idx=i;
+                        break;
+                    }
+                }
+            }
+
+            let binary_srch=(n_idx,m_idx)=>{
+                let l=0,h=temp_arr.length-1;
+                while(l<=h){
+                    n_idx.push([l,h]);
+                    let m=parseInt(l+(h-l)/2);
+                    m_idx.push(m);
+                    if(temp_arr[m]==srch_no) {
+                        f_idx=m;
+                        break;
+                    }
+                    else if(temp_arr[m]>srch_no) h=m-1;
+                    else l=m+1;
+                }
+            }
+
+            let srch_anime = (opt)=>{
+                srch_no=document.getElementById("no_src").value;
+                if(srch_no == "") {
+                    document.getElementById("no_src").style.borderColor="red";
+                    document.getElementById("no_src").style.scale="110%";
+                    setTimeout(()=>{
+                        document.getElementById("no_src").style.borderColor="whitesmoke"; 
+                        document.getElementById("no_src").style.scale="100%";
+                    },500)
+                    return;
+                }
+
+                document.getElementById('l').setAttribute("disabled",true);
+                document.getElementById('r').setAttribute("disabled",true);
+                document.getElementById('start').setAttribute("disabled",true);
+                document.getElementById('rand').setAttribute("disabled",true);
+                document.getElementById('sz_dec').setAttribute("disabled",true);
+                document.getElementById('sz_inc').setAttribute("disabled",true);
+                document.getElementById('sz_dec2').setAttribute("disabled",true);
+                document.getElementById('sz_inc2').setAttribute("disabled",true);
+
+                f_idx=arr.length;
+                if(opt=='Linear Search'){
+                    linear_srch();
+                    for(let i=0;i<=Math.min(f_idx,arr.length-1);i++){
+                        setTimeout(()=>{
+                            if(i>0){
+                                document.getElementById(i-1).style.backgroundColor="#50C878";
+                                document.getElementById(i-1).style.scale="100%";
+                            }
+                            document.getElementById(i).style.backgroundColor="#014421";
+                            document.getElementById(i).style.scale="110%";
+                            document.getElementById("ele_fnd_info").innerHTML=i;
+                        },500*i/speed);
+                    }
+                    if(f_idx!=arr.length){
+                        setTimeout(()=>{
+                            document.getElementById(f_idx).style.backgroundColor="orange";
+                            document.getElementById(f_idx).style.scale="120%";
+                            id=null;
+                            fnd(f_idx);
+                            document.getElementById('l').removeAttribute("disabled",true);
+                            document.getElementById('r').removeAttribute("disabled",true);
+                            document.getElementById('rand').removeAttribute("disabled",true);
+                        },500*(f_idx+1)/speed);
+                    }
+                    else{
+                        setTimeout(()=>{
+                            document.getElementById(f_idx-1).style.backgroundColor="#50C878";
+                            document.getElementById(f_idx-1).style.scale="100%";
+                            document.getElementById("curr_idx").innerHTML="Not<br>found!!!"
+                            document.getElementById("ele_fnd_info").innerHTML="Specified element do not exits in the array."
+                            document.getElementById("ele_fnd_info").style.border="none";
+                            document.getElementById("ele_fnd_info").style.color="white";
+                            document.getElementById("ele_fnd_info").style.textAlign="center";
+                            document.getElementById('l').removeAttribute("disabled",true);
+                            document.getElementById('r').removeAttribute("disabled",true);
+                            document.getElementById('rand').removeAttribute("disabled",true);
+                        },500*(f_idx+1)/speed);
+                    }
+                }
+                else{
+                    let n_idx=[];
+                    let m_idx=[];
+                    binary_srch(n_idx,m_idx);
+
+                    for(let i=0;i<n_idx.length;i++){
+                        setTimeout(()=>{
+                            if(i>0){
+                                document.getElementById(n_idx[i-1][0]).style.backgroundColor="#50C878";
+                                document.getElementById(n_idx[i-1][0]).style.scale="100%";
+                                document.getElementById(n_idx[i-1][1]).style.backgroundColor="#50C878";
+                                document.getElementById(n_idx[i-1][1]).style.scale="100%";
+                                document.getElementById(m_idx[i-1]).style.background="#50C878";
+                                document.getElementById(m_idx[i-1]).style.scale="100%";
+                            }
+                            document.getElementById(n_idx[i][0]).style.backgroundColor="red";
+                            document.getElementById(n_idx[i][0]).style.scale="110%";
+                            document.getElementById(n_idx[i][1]).style.backgroundColor="blue";
+                            document.getElementById(n_idx[i][1]).style.scale="110%";
+                            document.getElementById(m_idx[i]).style.background="#014421";
+                            document.getElementById(m_idx[i]).style.scale="110%";
+                            document.getElementById("ele_fnd_info").innerHTML=m_idx[i];
+                            document.getElementById("left_info").innerHTML=n_idx[i][0];
+                            document.getElementById("right_info").innerHTML=n_idx[i][1];
+                            if(i==n_idx.length-1){
+                                setTimeout(()=>{
+                                    if(f_idx!=arr.length){
+                                        document.getElementById(f_idx).style.backgroundColor="orange";
+                                        document.getElementById(f_idx).style.scale="120%";
+                                        id=null;
+                                        fnd(f_idx);
+                                        document.getElementById('l').removeAttribute("disabled",true);
+                                        document.getElementById('r').removeAttribute("disabled",true);
+                                        document.getElementById('rand').removeAttribute("disabled",true);
+                                    }
+                                    else{
+                                        document.getElementById(f_idx-1).style.backgroundColor="#50C878";
+                                        document.getElementById(f_idx-1).style.scale="100%";
+                                        document.getElementById("curr_idx").innerHTML="Not<br>found!!!"
+                                        document.getElementById("ele_fnd_info").innerHTML="Specified element do not exits in the array."
+                                        document.getElementById("ele_fnd_info").style.border="none";
+                                        document.getElementById("ele_fnd_info").style.color="white";
+                                        document.getElementById("ele_fnd_info").style.textAlign="center";
+                                        document.getElementById('l').removeAttribute("disabled",true);
+                                        document.getElementById('r').removeAttribute("disabled",true);
+                                        document.getElementById('rand').removeAttribute("disabled",true);
+                                    }
+                                },3000/speed);
+                            }
+                        },3000*i/speed);
+                    }
+                }
+            }
+
+            let fnd = (fnd_idx)=>{
+
+                let top=document.getElementById(fnd_idx).offsetTop;
+                let left=document.getElementById(fnd_idx).offsetLeft;
+                document.getElementById(f_idx).style.position="absolute";
+
+                let diffa=Math.abs(top-document.getElementById("here").offsetTop);
+                let diffb = Math.abs(left-document.getElementById("here").offsetLeft);
+
+                let ex=diffb/diffa;
+
+                let elem=document.getElementById(fnd_idx);
+                clearInterval(id);
+                let f=0;
+                id=setInterval(()=>{
+                    if(top==document.getElementById("here").offsetTop && ((f && left<=document.getElementById("here").offsetLeft)|| (!f && left>=document.getElementById("here").offsetLeft))){
+                        document.getElementById("ele_fnd_info").style.display="block";
+                        document.getElementById("ele_fnd_info").style.textAlign="end";
+                        document.getElementById("ele_fnd_info").innerHTML=`Element found at index ${fnd_idx}`;
+                        document.getElementById("ele_fnd_info").style.border="none";
+                        document.getElementById("ele_fnd_info").style.color="white";
+                        document.getElementById("curr_idx").innerHTML="";
+                        clearInterval(id);
+                    }
+                    else{
+                        if(top>(document.getElementById("here").offsetTop)) top--;
+                        if(document.getElementById("here").offsetLeft > left) left+=ex;
+                        if(document.getElementById("here").offsetLeft < left) f=1,left-=ex;
+                        elem.style.top=top+'px';
+                        elem.style.left=left+'px';
+                    }
+                },5);
+            }
+
+            let cg=(l_r)=>{
+                document.getElementById('start').removeAttribute("disabled",true);
+                document.getElementById('sz_dec').removeAttribute("disabled",true);
+                document.getElementById('sz_inc').removeAttribute("disabled",true);
+                document.getElementById('sz_dec2').removeAttribute("disabled",true);
+                document.getElementById('sz_inc2').removeAttribute("disabled",true);
+                if(l_r=='l'){
+                    document.getElementById("ch_algo").innerHTML="Linear Search";
+                    let text="";
+                    if(arr.length<temp_arr.length) arr=[...temp_arr];
+                    for(let i=0;i<arr.length;i++)
+                        text+=`<div class="ele" id="${i}"><div id="no">${arr[i]}</div><div id="idx">${i}</div></div>`;
+                    document.getElementById("arr").innerHTML=text;
+                    document.getElementById("curr_idx").innerHTML="Current<br>index</p>";
+                    document.getElementById("left").style.display="none";
+                    document.getElementById("right").style.display="none";
+                    document.getElementById("ele_fnd_info").style.border="solid";
+                    document.getElementById("ele_fnd_info").style.borderColor="#50C878";
+                    document.getElementById("ele_fnd_info").style.color="#50C878";
+                    document.getElementById("ele_fnd_info").innerHTML="";
+                    document.getElementById("ele_fnd_info").style.display="flex";
+                    document.getElementById("ele_fnd_info").style.alignContent="center";
+                    document.getElementById("ele_fnd_info").style.justifyContent="center";
+                    
+                }
+                else{
+                    temp_arr=[...arr];
+                    document.getElementById("ch_algo").innerHTML="Binary Search";
+                    temp_arr.sort((a,b)=>{return a-b});
+                    let text="";
+                    for(let i=0;i<temp_arr.length;i++)
+                        text+=`<div class="ele" id="${i}"><div id="no">${temp_arr[i]}</div><div id="idx">${i}</div></div>`;
+                    document.getElementById("arr").innerHTML=text;
+                    document.getElementById("curr_idx").innerHTML="Middle<br>index</p>";
+                    document.getElementById("left").style.display="flex";
+                    document.getElementById("right").style.display="flex";
+                    document.getElementById("ele_fnd_info").style.border="solid";
+                    document.getElementById("ele_fnd_info").style.borderColor="#50C878";
+                    document.getElementById("ele_fnd_info").style.color="#50C878";
+                    document.getElementById("ele_fnd_info").innerHTML="";
+                    document.getElementById("ele_fnd_info").style.display="flex";
+                    document.getElementById("ele_fnd_info").style.alignContent="center";
+                    document.getElementById("ele_fnd_info").style.justifyContent="center";
+                }
+            }
+
+            let setting_open=()=>{
+                document.getElementById("settingbar").style.display="flex";
+            }
+            let setting_close=()=>{
+                document.getElementById("settingbar").style.display="none";
+            }
+
+            let sbar_open=()=>{
+                arr_cr(document.getElementById('ch_algo').innerHTML);
+                document.getElementById("sidebar").style.display="flex";
+                document.getElementById("bk").style.display="inline";
+                document.getElementById("settingbar").style.display="none";
+            }
+            let sbar_close=()=>{
+                document.getElementById("sidebar").style.display="none";
+                document.getElementById("bk").style.display="none";
+            }
+
+        </script>
+    </body>
+</html>
